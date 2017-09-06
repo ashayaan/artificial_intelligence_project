@@ -8,8 +8,10 @@ seq2 = pd.Series(np.arange(2))
 
 def split_train_test(filename, test_ratio):
 	genes_df = pd.read_csv(filename, index_col=0)
-	affx_col = [col for col in genes_df if col.startswith('AFFX')]
-	genes_df = genes_df.drop(affx_col, axis=1)
+	#affx_col = [col for col in genes_df if col.startswith('AFFX')]
+	#genes_df = genes_df.drop(affx_col, axis=1)
+	genes_df = genes_df.dropna()
+	print genes_df.shape
 	#Slices by label value
 	labels = pd.Series(genes_df['label'].unique())
 	slices = labels.apply(lambda l: genes_df[genes_df['label']==l])
@@ -37,7 +39,6 @@ def test(test_data, test_labels, lr):
 
 if __name__ == "__main__":
 	(train_data, train_labels, test_data, test_labels) = split_train_test(sys.argv[1], (1.0/3.0))
-	print train_data
 	lr = train(train_data, train_labels)
 	print test(test_data, test_labels, lr)
 		
