@@ -30,7 +30,6 @@ def split_train_test(filename, test_ratio):
 	train_data = train.drop(['label'], axis=1)
 	return (train_data, train_labels, test_data, test_labels)
 	
-
 def train(train_data, train_labels):
 	lr = LogisticRegression(class_weight='balanced')
 	lr.fit(train_data,train_labels)	
@@ -68,7 +67,6 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-
 
 if __name__ == "__main__":
 	(train_data, train_labels, test_data, test_labels) = split_train_test(sys.argv[1], (1.0/3.0))
