@@ -4,54 +4,54 @@ import pandas as pd
 def est_flexibility(protein_sequence):
 	prot_seq = list(protein_sequence)
 	try:
-		flexibility_seq = map(average_flexibility, prot_seq)
+		felxibility_seq = map(average_flexibility, prot_seq)
 	except ValueError as e:
-		flexibility_seq = []
+		felxibility_seq = []
 		print e
-	list_of_lists = [ flexibility_seq[i-4:i+5] for i in range(4,len(prot_seq)-4) ]
+	list_of_lists = [ felxibility_seq[i-4:i+5] for i in range(4,len(prot_seq)-4) ]
 	return np.mean(list_of_lists,axis=1)
 	
 def average_flexibility(aa):
 	if aa == 'A':
-		return 0.360
+		return 78.00
 	elif aa == 'R':
-		return 0.530
+		return 95.00
 	elif aa == 'N':
-		return 0.460
+		return 94.00
 	elif aa == 'D':
-		return 0.510
+		return 81.00
 	elif aa == 'C':
-		return 0.350
+		return 89.00
 	elif aa == 'Q':
-		return 0.490
+		return 87.00
 	elif aa == 'E':
-		return 0.500
+		return 78.00
 	elif aa == 'G':
-		return 0.540
+		return 84.00
 	elif aa == 'H':
-		return 0.320
+		return 84.00
 	elif aa == 'I':
-		return 0.460
+		return 88.00
 	elif aa == 'L':
-		return 0.370
+		return 85.00
 	elif aa == 'K':
-		return 0.470
+		return 87.00
 	elif aa == 'M':
-		return 0.300
+		return 80.00
 	elif aa == 'F':
-		return 0.310
+		return 81.00
 	elif aa == 'P':
-		return 0.510
+		return 91.00
 	elif aa == 'S':
-		return 0.510
+		return 107.00
 	elif aa == 'T':
-		return 0.440
+		return 93.00
 	elif aa == 'W':
-		return 0.310
+		return 104.00
 	elif aa == 'Y':
-		return 0.420
+		return 84.00
 	elif aa == 'V':
-		return 0.390
+		return 89.00
 	else:	
 		raise ValueError('The input must be one of the twenty amino acids: A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V') 
 
