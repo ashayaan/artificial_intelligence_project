@@ -54,6 +54,3 @@ def average_flexibility(aa):
 		return 0.390
 	else:	
 		raise ValueError('The input must be one of the twenty amino acids: A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V') 
-
-if __name__ == '__main__':
-	print est_flexibility('AAACDEQKKKLMMMWWWYYCCCEEENVDEFVY')

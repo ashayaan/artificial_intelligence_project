@@ -55,4 +55,3 @@ def hydrophob_kyte_dolittle(aa):
 	else:	
 		raise ValueError('The input must be one of the twenty amino acids: A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V') 
 
-est_hydrophob('AAACDEQKKKLMMMWWWYYCCCEEENVDEFVY')

@@ -1,17 +1,17 @@
 import numpy as np
 import pandas as pd
 
-def est_flexibility(protein_sequence):
+def est_rec_factor(protein_sequence):
 	prot_seq = list(protein_sequence)
 	try:
-		felxibility_seq = map(average_flexibility, prot_seq)
+		rec_seq = map(recognition, prot_seq)
 	except ValueError as e:
-		felxibility_seq = []
+		rec_seq = []
 		print e
-	list_of_lists = [ felxibility_seq[i-4:i+5] for i in range(4,len(prot_seq)-4) ]
+	list_of_lists = [ rec_seq[i-4:i+5] for i in range(4,len(prot_seq)-4) ]
 	return np.mean(list_of_lists,axis=1)
 	
-def average_flexibility(aa):
+def recognition(aa):
 	if aa == 'A':
 		return 78.00
 	elif aa == 'R':
@@ -54,6 +54,3 @@ def average_flexibility(aa):
 		return 89.00
 	else:	
 		raise ValueError('The input must be one of the twenty amino acids: A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V') 
-
-if __name__ == '__main__':
-	print est_flexibility('AAACDEQKKKLMMMWWWYYCCCEEENVDEFVY')
