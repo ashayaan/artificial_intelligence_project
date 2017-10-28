@@ -1,0 +1,57 @@
+DNAJ protein, putative
+Circumsporozoite protein
+Other Plasmodium falciparum (malaria parasite P. falciparum) protein
+Merozoite surface protein 1
+Apical membrane antigen 1
+Glutamate-rich protein
+Sexual stage-specific protein
+101 kDa malaria antigen
+Erythrocyte binding antigen 175
+Antigen 332, DBL-like protein
+Merozoite surface protein 3
+Serine-repeat antigen protein
+Merozoite surface antigen 2
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8I639)
+Heat shock 70 kDa protein
+Uncharacterized protein MAL13P1.304
+Circumsporozoite-related antigen
+Merozoite surface protein 6
+Cytoadherence linked asexual protein
+Probable ATP-dependent helicase PF08_0048
+Rhoptry antigen protein (Fragment)
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:C6KSK8)
+Putative E3 ubiquitin-protein ligase protein PFF1365c
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:C6KTF7)
+Uncharacterized protein PFB0145c
+Uncharacterized protein PFB0315w
+Liver stage antigen 3
+Protein dopey homolog PFC0245c
+S-antigen protein
+RING finger protein PFF0165c
+Thrombospondin-related anonymous protein, TRAP
+Erythrocyte binding antigen-140
+Multidrug resistance protein
+Fructose-bisphosphate aldolase
+Merozoite surface protein 4
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8I098)
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8I218)
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8I220)
+Heat shock protein 70 (HSP70) homologue
+Erythrocyte membrane protein 1 (PfEMP1), truncated
+Interspersed repeat antigen, putative
+Mature parasite-infected erythrocyte surface antigen (MESA) or PfEMP2
+Clustered-asparagine-rich protein
+Asparagine/aspartate rich protein, putative
+Conserved Plasmodium membrane protein (UniProt:Q8I588)
+Serine--tRNA ligase, cytoplasmic
+Uncharacterized protein PFL0250w
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8IAK2)
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8IAS4)
+Uncharacterized protein MAL8P1.12
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8IBW8)
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q8IBX2)
+Uncharacterized protein PF11_0207
+Erythrocyte membrane protein, putative (UniProt:Q8IJ52)
+Rhoptry-associated protein 1, RAP1
+Knob-associated histidine-rich protein
+Erythrocyte membrane protein 1, PfEMP1 (UniProt:Q9U0G5)
