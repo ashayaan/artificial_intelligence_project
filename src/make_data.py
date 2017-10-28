@@ -13,14 +13,11 @@ def writeProperty(l,data_file):
 	data_file.write('\n')
 
 
-def writeValues(antisequence,dict_name,name,data_file,labels,list_antiname):
+def writeValues(antisequence,dict_name,name,data_file,labels,genomename,list_antiname):
+	genomename.write(str(name)+'\n')
 	if name.upper() in list_antiname:
-		labels.write(name)
-		labels.write(',')
 		labels.write('1'+'\n')
 	else:
-		labels.write(name)
-		labels.write(',')
 		labels.write('0'+'\n')
 
 	data_file.write('6')
@@ -40,11 +37,12 @@ def processing(f,list_antiname):
 	
 	data_file = open('../data_files/genome-properties.csv','w')
 	labels = open('../data_files/genome-label.csv','w')
-	
+	genomename = open('../data_files/genome-name.csv','w')
+
 	for line in f:
 		if line[0] == '>':
 			if(antisequence and dict_name):
-				writeValues(antisequence,dict_name,name,data_file,labels,list_antiname)
+				writeValues(antisequence,dict_name,name,data_file,labels,genomename,list_antiname)
 			x = line.split()
 			dict_name = ''
 			name=''
@@ -79,4 +77,3 @@ if __name__ == '__main__':
 	anti.close()
 
 	processing(f,list_antiname)
-	
