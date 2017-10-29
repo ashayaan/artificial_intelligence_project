@@ -7,8 +7,12 @@ from recognition_factor import est_rec_factor
 
 
 def writeProperty(l,data_file):
+	count = 0
 	for i in l:
+		count+=1
 		data_file.write(str(i))
+		if count == len(l):
+			break
 		data_file.write(',')
 	data_file.write('\n')
 
