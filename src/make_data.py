@@ -1,3 +1,6 @@
+import csv
+import os
+import numpy as np
 from alphahelix import est_aplha_helix
 from betaturn import est_beat_turn
 from flexibility import est_flexibility
@@ -6,43 +9,59 @@ from polarity import est_polarity
 from recognition_factor import est_rec_factor
 
 
-def writeProperty(l,data_file):
-	count = 0
-	for i in l:
-		count+=1
-		data_file.write(str(i))
-		if count == len(l):
-			break
-		data_file.write(',')
-	data_file.write('\n')
-
-
 def writeValues(antisequence,dict_name,name,data_file,labels,genomename,list_antiname):
-	genomename.write(str(name)+'\n')
+	genome_name_writer=csv.writer(open(genomename,'a'))
+	label_writer=csv.writer(open(labels,'a'))
+	
+	genome_name_writer.writerow([str(name)])
+	
 	if name.upper() in list_antiname:
-		labels.write('1'+'\n')
+		label_writer.writerow([1])
 	else:
-		labels.write('0'+'\n')
+		label_writer.writerow([0])
+	# data_file.write('6')
+	# data_file.write(',')
+	# data_file.write(str(len(antisequence))+'\n')
+	
+	aplha = np.asarray(est_aplha_helix(antisequence))
+	beat = np.asarray(est_beat_turn(antisequence))
+	flex = np.asarray(est_flexibility(antisequence))
+	pol = np.asarray(est_polarity(antisequence))
+	hydro = np.asarray(est_hydrophob(antisequence))
+	rec_f = np.asarray(est_rec_factor(antisequence))
 
-	data_file.write('6')
-	data_file.write(',')
-	data_file.write(str(len(antisequence))+'\n')
-	writeProperty(est_aplha_helix(antisequence),data_file)
-	writeProperty(est_beat_turn(antisequence),data_file)
-	writeProperty(est_flexibility(antisequence),data_file)
-	writeProperty(est_hydrophob(antisequence),data_file)
-	writeProperty(est_polarity(antisequence),data_file)
-	writeProperty(est_rec_factor(antisequence),data_file)
+	with open(data_file,'a') as csvfile:
+		data_file_write = csv.writer(csvfile)
+		data_file_write.writerow([6]+[(len(antisequence))])
+		data_file_write.writerow(aplha)
+		data_file_write.writerow(beat)
+		data_file_write.writerow(flex)
+		data_file_write.writerow(pol)
+		data_file_write.writerow(hydro)
+		data_file_write.writerow(rec_f)
+		# data_file_write.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+
+
+
+def delteFile(filename):
+	try:
+		os.remove(filename)
+	except OSError:
+		pass
 
 def processing(f,list_antiname):
 	dict_name = ''
 	antisequence = ''
 	count = 0
-	
-	data_file = open('../data_files/genome-properties.csv','w')
-	labels = open('../data_files/genome-label.csv','w')
-	genomename = open('../data_files/genome-name.csv','w')
 
+	data_file = "../data_files/genome-properties.csv"
+	labels = "../data_files/genome-label.csv"
+	genomename = "../data_files/genome-name.csv"
+
+	delteFile(genomename)
+	delteFile(data_file)
+	delteFile(labels)
+	
 	for line in f:
 		if line[0] == '>':
 			if(antisequence and dict_name):
