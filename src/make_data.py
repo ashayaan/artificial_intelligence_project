@@ -32,7 +32,7 @@ def writeValues(antisequence,dict_name,name,data_file,labels,genomename,list_ant
 
 	with open(data_file,'a') as csvfile:
 		data_file_write = csv.writer(csvfile)
-		data_file_write.writerow([6]+[(len(antisequence))])
+		data_file_write.writerow([6]+[len(aplha)])
 		data_file_write.writerow(aplha)
 		data_file_write.writerow(beat)
 		data_file_write.writerow(flex)
