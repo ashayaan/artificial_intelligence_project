@@ -13,7 +13,7 @@ def get_feature_vector(sequence,name,list_antiname):
 		label = 1
 	else:
 		label = 0
-	rec_f = np.asarray(est_hydrophob(sequence))
+	rec_f = np.asarray(est_rec_factor(sequence))
 	rec_f = np.insert(rec_f,rec_f.size,label)
 	return rec_f
 
@@ -21,7 +21,7 @@ def writeValues(antisequence,dict_name,name,data_file,labels,genomename,list_ant
 	genomename.write(str(name)+'\n')
 	features = get_feature_vector(antisequence,name,list_antiname)	
 	print features.shape
-	print len(antisequence)
+	print len(features)
 	print antisequence
 	flag = features[features.shape[0]-1]
 	if(flag == 1):
