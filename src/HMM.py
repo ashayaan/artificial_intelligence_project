@@ -6,7 +6,7 @@ from hmmlearn import hmm
 def fitModel(train,train_len,test,test_len):
 	x = np.concatenate(train)
 	# y = np.concatenate(test)
-	remodel = hmm.GaussianHMM(n_components=2,covariance_type="full",min_covar=1 ,n_iter=10)
+	remodel = hmm.GaussianHMM(n_components=2,covariance_type="full",min_covar=2 ,n_iter=10,algorithm='map')
 	remodel.fit(x,train_len)
 	result = []
 	count = 0
@@ -48,7 +48,7 @@ def testData(f1):
 	test_len = []
 	count = 0
 	for line in f1:
-		if count > 300:
+		if count >= 300:
 			a = np.array(line.split(','),dtype=np.float32)
 			b = np.array([a])
 			b = b.T
@@ -62,9 +62,12 @@ def testData(f1):
 
 
 if __name__ == '__main__':
-	filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv"]
+	#filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv"]
+	
+	filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-hydro.csv","../data_files/genome-properties-accessebility.csv"]
 
 	temp_result = []
+
 
 	for name in filename:
 		f1 = open(name,'r')

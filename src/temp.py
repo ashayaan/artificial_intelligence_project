@@ -2,76 +2,93 @@ import pandas as pd
 import numpy as np
 from hmmlearn import hmm
 
-def fitModel(train,train_len,test_len,test):
-	x = np.concatenate(train)
-	y = np.concatenate(test)
-	remodel = hmm.GaussianHMM(n_components=2,covariance_type="tied", n_iter=100)
-	remodel.fit(x,train_len)
-	print remodel.predict(test[20])
-	# print test[0]
-	# for i in test:
-	# 	l = remodel.predict(i)
-	# 	x = np.mean(l)
-	# 	print i[-1],
-	# 	if x >= 0.5:
-	# 		print "1"
-	# 	else:
-	# 		print "0"
-	
 
-if __name__ == '__main__':
-	train=[]
+def fitModel(train,train_len,test,test_len):
+	x = np.concatenate(train)
+	# y = np.concatenate(test)
+	remodel = hmm.GaussianHMM(n_components=2,covariance_type="full",min_covar=1 ,n_iter=10,algorithm='map', tol=1,)
+	remodel.fit(x,train_len)
+	result = []
+	count = 0
+	for i in test:	
+		l = np.mean(remodel.predict(i))
+		# print i[-1],
+		ans = 0
+		if l > 0.5:
+			ans = 1
+			result.append(1)
+		else:
+			ans = 0
+			result.append(0)
+		if ans == i[-1]:
+			count+=1
+	print "labels predicted correctly "+ str(count) + " Accuracy " + str(count/56.0) + "\n"
+	return result
+
+def trainData(f1):
+	train = []
 	train_len = []
 
-	for i in range(0,21):
-		f1 = open('../data_files/genome-properties-rec.csv','r')
-		f2 = open ('../data_files/genome-properties-rec.csv','r')
-		count = 0;
-		if i%2 == 0:
-			for line in f2:
-				if count == i:
-					a = np.array(line.split(','),dtype=np.float32)
-					b = np.array([a])
-					b = b.T
-					# print b
-					train.append(b)
-					train_len.append(len(b))
-				count += 1
-		else:
-			for line in f1:
-				if count == i:
-					a = np.array(line.split(','),dtype=np.float32)
-					b = np.array([a])
-					b = b.T
-					train.append(b)
-					train_len.append(len(b))
-				count += 1
+	count = 0
+	for line in f1:
+		if count < 300:
+			a = np.array(line.split(','),dtype=np.float32)
+			b = np.array([a])
+			b = b.T
+			train.append(b)
+			train_len.append(len(b))
+		count += 1
 
+	f1.close()
+
+	return train,train_len
+	
+def testData(f1):
 	test = []
 	test_len = []
-	for i in range(21,51):
-		f1 = open('../data_files/genome-properties-rec.csv','r')
-		f2 = open ('../data_files/genome-properties-rec.csv','r')
-		count = 0;
-		if i%2 == 0:
-			for line in f2:
-				if count == i:
-					a = np.array(line.split(','),dtype=np.float32)
-					b = np.array([a])
-					b = b.T
-					# print b
-					test.append(b)
-					test_len.append(len(b))
-				count += 1
-		else:
-			for line in f1:
-				if count == i:
-					a = np.array(line.split(','),dtype=np.float32)
-					b = np.array([a])
-					b = b.T
-					test.append(b)
-					test_len.append(len(b))
-				count += 1
+	count = 0
+	for line in f1:
+		if count >= 300:
+			a = np.array(line.split(','),dtype=np.float32)
+			b = np.array([a])
+			b = b.T
+			test.append(b)
+			test_len.append(len(b))
+		count += 1
+
+	f1.close()
+
+	return test,test_len
+
+
+if __name__ == '__main__':
+	#filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv"]
 	
-	
-	fitModel(train,train_len,test_len,test)
+	filename =["../data_files/genome-properties-accessebility.csv"]
+
+	temp_result = []
+
+
+	for name in filename:
+		f1 = open(name,'r')
+		train,train_len = trainData(f1)
+
+		f1 = open(name,'r')
+		test,test_len = testData(f1)
+		print "running for " + str(name)
+		temp_result.append(fitModel(train,train_len,test,test_len))
+
+	result = np.array(temp_result)
+	result = np.sum(result,axis=0)
+	result = result / 5.0
+
+	count = 0
+	for i in range(len(result)):
+		ans = 0
+		if result[i] > 0.5:
+			ans = 1
+		if ans == test[i][-1]:
+			count+=1
+	print "Consolidated labels predicted correctly "+ str(count) + " Consolidated Accuracy " + str(count/56.0) 
+
+		

@@ -7,6 +7,8 @@ from flexibility import est_flexibility
 from hydrophobicity import est_hydrophob
 from polarity import est_polarity
 from recognition_factor import est_rec_factor
+from accessebility import est_accessebility
+from tfa_retention import est_tfa_retention
 
 
 def writeValues(antisequence,name,data_file,genomename,list_antiname):
@@ -38,7 +40,13 @@ def writeValues(antisequence,name,data_file,genomename,list_antiname):
 	rec_f = np.asarray(est_rec_factor(antisequence))
 	rec_f = np.insert(rec_f,rec_f.size,label)
 
-	features = [aplha,beat,flex,pol,hydro,rec_f]
+	accessebility = np.asarray(est_accessebility(antisequence))
+	accessebility = np.insert(accessebility,accessebility.size,label)
+
+	retention = np.asarray(est_tfa_retention(antisequence))
+	retention = np.insert(retention,retention.size,label)
+
+	features = [aplha,beat,flex,pol,hydro,rec_f,accessebility,retention]
 	
 	for i in range(len(data_file)):
 		with open(data_file[i],'a') as csvfile:
@@ -58,7 +66,7 @@ def processing(f,list_antiname):
 	antisequence = ''
 	count = 0
 
-	data_file = ["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv","../data_files/genome-properties-rec.csv"]
+	data_file = ["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv","../data_files/genome-properties-rec.csv","../data_files/genome-properties-accessebility.csv","../data_files/genome-properties-retention.csv"]
 	genomename = "../data_files/genome-name.csv"
 
 	delteFile(genomename)
