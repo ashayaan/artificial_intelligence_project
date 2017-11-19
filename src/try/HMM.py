@@ -71,5 +71,24 @@ if __name__ == '__main__':
 
 	result = fitModel(trainset,train_len,testset,test_len)
 
-	print np.mean(result)
+	file = open("label.txt","r")
+
+	lable_list = []
+	count = 0
+	for line in file:
+		line = line.strip('\n')
+		a = line
+		a = int(a)
+		if a == 1:
+			count+=1
+		lable_list.append(a)
 	
+	count = 0
+	for i in range(len(result)):
+		temp_label = 0
+		if result[i] <= 3000:
+			temp_label = 1
+
+		if temp_label == lable_list[i]:
+			count+=1;
+	print count

@@ -10,9 +10,9 @@ from recognition_factor import est_rec_factor
 from accessebility import est_accessebility
 from tfa_retention import est_tfa_retention
 
-global_count = 0
 
-def writeValues(antisequence,name,data_file_antigenic,data_file_nonantigenic,genomename,list_antiname):
+def writeValues(antisequence,name,data_file_antigenic,data_file_nonantigenic,genomename,list_antiname,count):
+
 	genome_name_writer=csv.writer(open(genomename,'a'))
 	
 	genome_name_writer.writerow([str(name)])
@@ -49,7 +49,7 @@ def writeValues(antisequence,name,data_file_antigenic,data_file_nonantigenic,gen
 
 	features = [aplha,beat,flex,pol,hydro,rec_f,accessebility,retention]
 	
-	if label == 0 and global_count <=300:
+	if label == 0 and count <=300:
 		for i in range(len(data_file_nonantigenic)):
 			with open(data_file_nonantigenic[i],'a') as csvfile:
 				data_file_write = csv.writer(csvfile)
@@ -60,6 +60,9 @@ def writeValues(antisequence,name,data_file_antigenic,data_file_nonantigenic,gen
 			with open(data_file_antigenic[i],'a') as csvfile:
 				data_file_write = csv.writer(csvfile)
 				data_file_write.writerow(features[i])
+
+		with open('label.txt','a') as file:
+			file.write(str(label)+'\n')
 
 
 
@@ -88,7 +91,8 @@ def processing(f,list_antiname):
 	for line in f:
 		if line[0] == '>':
 			if(antisequence and dict_name):
-				writeValues(antisequence,name,data_file_antigenic,data_file_nonantigenic,genomename,list_antiname)
+				count+=1
+				writeValues(antisequence,name,data_file_antigenic,data_file_nonantigenic,genomename,list_antiname,count)
 			x = line.split()
 			dict_name = ''
 			name=''
