@@ -4,25 +4,21 @@ from hmmlearn import hmm
 
 
 def fitModel(train,train_len,test,test_len):
-	x = np.concatenate(train)
-	# y = np.concatenate(test)
-	remodel = hmm.GaussianHMM(n_components=2,covariance_type="full",min_covar=2 ,n_iter=10,algorithm='map')
-	remodel.fit(x,train_len)
+	print train.shape
+	remodel = hmm.GaussianHMM(n_components=2,min_covar=1,n_iter=10)
+	remodel.fit(train,train_len)
 	result = []
+
 	count = 0
-	for i in test:	
-		l = np.mean(remodel.predict(i))
-		# print i[-1],
-		ans = 0
-		if l > 0.5:
-			ans = 1
-			result.append(1)
-		else:
-			ans = 0
-			result.append(0)
-		if ans == i[-1]:
-			count+=1
-	print "labels predicted correctly "+ str(count) + " Accuracy " + str(count/56.0) + "\n"
+	
+	for i in range(len(test_len)-1):	
+		# print test[test_len[i]+1:test_len[i]+test_len[i+1],:]
+		# print '\n'
+		scr = remodel.decode(test[test_len[i]+1:test_len[i]+test_len[i+1],:])
+		result.append(scr)
+
+	# print len(result)
+	
 	return result
 
 def trainData(f1):
@@ -33,6 +29,7 @@ def trainData(f1):
 	for line in f1:
 		if count < 300:
 			a = np.array(line.split(','),dtype=np.float32)
+			#print a
 			b = np.array([a])
 			b = b.T
 			train.append(b)
@@ -41,7 +38,7 @@ def trainData(f1):
 
 	f1.close()
 
-	return train,train_len
+	return np.concatenate(train),train_len
 	
 def testData(f1):
 	test = []
@@ -58,37 +55,25 @@ def testData(f1):
 
 	f1.close()
 
-	return test,test_len
+	return np.concatenate(test),test_len
 
 
-if __name__ == '__main__':
-	#filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv"]
-	
+if __name__ == '__main__':	
 	filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-hydro.csv","../data_files/genome-properties-accessebility.csv"]
-
 	temp_result = []
-
-
-	for name in filename:
+	
+	f = open(filename[0],'r')
+	trainset,trainlen = trainData(f)
+	f = open(filename[0],'r')
+	testset,testlen = testData(f)
+	for name in filename[1:]:
 		f1 = open(name,'r')
 		train,train_len = trainData(f1)
+		trainset = np.column_stack([trainset,train])
 
 		f1 = open(name,'r')
 		test,test_len = testData(f1)
+		testset = np.column_stack([testset,test])
 		print "running for " + str(name)
-		temp_result.append(fitModel(train,train_len,test,test_len))
-
-	result = np.array(temp_result)
-	result = np.sum(result,axis=0)
-	result = result / 5.0
-
-	count = 0
-	for i in range(len(result)):
-		ans = 0
-		if result[i] > 0.5:
-			ans = 1
-		if ans == test[i][-1]:
-			count+=1
-	print "Consolidated labels predicted correctly "+ str(count) + " Consolidated Accuracy " + str(count/56.0) 
-
-		
+	
+	print fitModel(trainset,train_len,testset,test_len)
