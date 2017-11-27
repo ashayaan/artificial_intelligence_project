@@ -6,7 +6,7 @@ from hmmlearn import hmm
 def fitModel(train,train_len,test,test_len):
 	x = np.concatenate(train)
 	# y = np.concatenate(test)
-	remodel = hmm.GaussianHMM(n_components=2,covariance_type="full",min_covar=2 ,n_iter=10,algorithm='map')
+	remodel = hmm.GaussianHMM(n_components=2,covariance_type="full",min_covar=2 ,n_iter=10,algorithm='viterbi')
 	remodel.fit(x,train_len)
 	result = []
 	count = 0
