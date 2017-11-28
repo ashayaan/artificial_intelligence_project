@@ -83,12 +83,14 @@ if __name__ == '__main__':
 	result = result / 5.0
 
 	count = 0
+	f = open('labels.text','w')
 	for i in range(len(result)):
 		ans = 0
 		if result[i] > 0.5:
 			ans = 1
 		if ans == test[i][-1]:
 			count+=1
+		f.write(str(test[i][-1]) + " " + str(ans) + "\n") 
 	print "Consolidated labels predicted correctly "+ str(count) + " Consolidated Accuracy " + str(count/56.0) 
 
 		

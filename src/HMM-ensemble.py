@@ -75,13 +75,15 @@ if __name__ == '__main__':
 	print mean
 	count = 0
 
+	f = open('labels2.text','w')
 	for i in range(len(result)):
 		ans = 0
 		if result[i] <= 2700:
 			ans = 1
 		if ans == test[i][-1]:
 			count+=1
-	print "Consolidated labels predicted correctly "+ str(count) + " Consolidated Accuracy " + str(count/56.0) 
+		f.write(str(test[i][-1]) + " " + str(ans) + "\n") 
+	print "Consolidated labels predicted correctly "+ str(count) + " Consolidated Accuracy " + str(count/108.0) 
 
 
 
