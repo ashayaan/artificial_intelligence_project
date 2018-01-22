@@ -1,0 +1,12 @@
+
+
+TESTING DATA SET
+
+
+Calculations per sequences:
+Label	True+	Marked+	Detect+	Prec.	Recall	F1
+0:	15	20	35	75	42.857	54.5453
+1:	0	20	5	0	0	-nan
+2:	0	0	0	0	0	-nan
+-----------------------------------------------------------------------
+Ov:	15	40	40	37.5	37.5	37.5
