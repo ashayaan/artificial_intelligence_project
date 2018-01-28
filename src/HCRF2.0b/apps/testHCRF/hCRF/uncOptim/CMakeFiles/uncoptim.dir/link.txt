@@ -1,0 +1,2 @@
+/usr/bin/ar qc libuncoptim.a  CMakeFiles/uncoptim.dir/src/uncoptim.cpp.o
+/usr/bin/ranlib libuncoptim.a
