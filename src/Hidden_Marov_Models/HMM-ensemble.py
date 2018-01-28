@@ -48,10 +48,10 @@ def testData(f1):
 
 
 if __name__ == '__main__':
-	#filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv"]
+	#filename =["../../data_files/genome-properties-alpha.csv","../../data_files/genome-properties-beta.csv","../../data_files/genome-properties-flex.csv","../../data_files/genome-properties-polar.csv","../../data_files/genome-properties-hydro.csv"]
 	
-	training_filename = ["../data_files/try/gennome-non-properties-alpha.csv","../data_files/try/gennome-non-properties-beta.csv","../data_files/try/gennome-non-properties-flex.csv","../data_files/try/gennome-non-properties-polar.csv","../data_files/try/gennome-non-properties-hydro.csv","../data_files/try/gennome-non-properties-accessebility.csv"]
-	testing_filename = ["../data_files/try/genome-properties-alpha.csv","../data_files/try/genome-properties-beta.csv","../data_files/try/genome-properties-flex.csv","../data_files/try/genome-properties-polar.csv","../data_files/try/genome-properties-hydro.csv","../data_files/try/genome-properties-accessebility.csv"]
+	training_filename = ["../../data_files/Ensemble-Data-Files/gennome-non-properties-alpha.csv","../../data_files/Ensemble-Data-Files/gennome-non-properties-beta.csv","../../data_files/Ensemble-Data-Files/gennome-non-properties-flex.csv","../../data_files/Ensemble-Data-Files/gennome-non-properties-polar.csv","../../data_files/Ensemble-Data-Files/gennome-non-properties-hydro.csv","../../data_files/Ensemble-Data-Files/gennome-non-properties-accessebility.csv"]
+	testing_filename = ["../../data_files/Ensemble-Data-Files/genome-properties-alpha.csv","../../data_files/Ensemble-Data-Files/genome-properties-beta.csv","../../data_files/Ensemble-Data-Files/genome-properties-flex.csv","../../data_files/Ensemble-Data-Files/genome-properties-polar.csv","../../data_files/Ensemble-Data-Files/genome-properties-hydro.csv","../../data_files/Ensemble-Data-Files/genome-properties-accessebility.csv"]
 	
 
 	temp_result = []
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 	print mean
 	count = 0
 
-	f = open('labels2.text','w')
+	f = open('../results/labels2.text','w')
 	for i in range(len(result)):
 		ans = 0
 		if result[i] <= 2700:

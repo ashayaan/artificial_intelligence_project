@@ -58,7 +58,7 @@ def testData(f1):
 
 
 if __name__ == '__main__':	
-	filename =["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-hydro.csv","../data_files/genome-properties-accessebility.csv"]
+	filename =["../../data_files/genome-properties-alpha.csv","../../data_files/genome-properties-beta.csv","../../data_files/genome-properties-flex.csv","../../data_files/genome-properties-hydro.csv","../../data_files/genome-properties-accessebility.csv"]
 	temp_result = []
 	
 	f = open(filename[0],'r')

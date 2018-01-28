@@ -66,8 +66,8 @@ def processing(f,list_antiname):
 	antisequence = ''
 	count = 0
 
-	data_file = ["../data_files/genome-properties-alpha.csv","../data_files/genome-properties-beta.csv","../data_files/genome-properties-flex.csv","../data_files/genome-properties-polar.csv","../data_files/genome-properties-hydro.csv","../data_files/genome-properties-rec.csv","../data_files/genome-properties-accessebility.csv","../data_files/genome-properties-retention.csv"]
-	genomename = "../data_files/genome-name.csv"
+	data_file = ["../../data_files/window9/genome-properties-alpha.csv","../../data_files/window9/genome-properties-beta.csv","../../data_files/window9/genome-properties-flex.csv","../../data_files/window9/genome-properties-polar.csv","../../data_files/window9/genome-properties-hydro.csv","../../data_files/window9/genome-properties-rec.csv","../../data_files/window9/genome-properties-accessebility.csv","../../data_files/window9/genome-properties-retention.csv"]
+	genomename = "../../data_files/genome-name.csv"
 
 	delteFile(genomename)
 	for i in data_file:
@@ -100,8 +100,8 @@ def processing(f,list_antiname):
 	
 
 if __name__ == '__main__':
-	f = open('../data_files/uniprot-plasmodium+falciparum.fasta' , 'r')
-	anti = open('../data_files/antiname.txt','r')
+	f = open('../../data_files/uniprot-plasmodium+falciparum.fasta' , 'r')
+	anti = open('../../data_files/antiname.txt','r')
 	
 	list_antiname=[]
 	

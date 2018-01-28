@@ -56,9 +56,9 @@ def testData(f1):
 
 
 if __name__ == '__main__':
-	#filename =["../data_files/window9/genome-properties-alpha.csv","../data_files/window9/genome-properties-beta.csv","../data_files/window9/genome-properties-flex.csv","../data_files/window9/genome-properties-polar.csv","../data_files/window9/genome-properties-hydro.csv"]
+	#filename =["../../data_files/window9/genome-properties-alpha.csv","../../data_files/window9/genome-properties-beta.csv","../../data_files/window9/genome-properties-flex.csv","../../data_files/window9/genome-properties-polar.csv","../../data_files/window9/genome-properties-hydro.csv"]
 	
-	filename =["../data_files/window9/genome-properties-alpha.csv","../data_files/window9/genome-properties-beta.csv","../data_files/window9/genome-properties-flex.csv","../data_files/window9/genome-properties-hydro.csv","../data_files/window9/genome-properties-accessebility.csv"]
+	filename =["../../data_files/window9/genome-properties-alpha.csv","../../data_files/window9/genome-properties-beta.csv","../../data_files/window9/genome-properties-flex.csv","../../data_files/window9/genome-properties-hydro.csv","../../data_files/window9/genome-properties-accessebility.csv"]
 
 	temp_result = []
 
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 	result = result / 5.0
 
 	count = 0
-	f = open('labels-window9.text','w')
+	f = open('../results/labels-window9.text','w')
 	for i in range(len(result)):
 		ans = 0
 		if result[i] > 0.5:
