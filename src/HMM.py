@@ -15,10 +15,9 @@ def fitModel(train,train_len,test,test_len):
 		# print test[test_len[i]+1:test_len[i]+test_len[i+1],:]
 		# print '\n'
 		scr = remodel.decode(test[test_len[i]+1:test_len[i]+test_len[i+1],:])
-		result.append(scr)
+		# print scr[0]
+		result.append(scr[0])
 
-	# print len(result)
-	
 	return result
 
 def trainData(f1):
@@ -76,4 +75,7 @@ if __name__ == '__main__':
 		testset = np.column_stack([testset,test])
 		print "running for " + str(name)
 	
-	print fitModel(trainset,train_len,testset,test_len)
+	x = fitModel(trainset,train_len,testset,test_len)
+	y = np.mean(x)
+
+	print y

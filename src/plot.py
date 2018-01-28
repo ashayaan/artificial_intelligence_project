@@ -39,7 +39,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 
 
 if __name__ == '__main__':
-	file = open("labels.text",'r')
+	file = open("labels-window9.text",'r')
 	original = []
 	predicted = []
 	for line in file:

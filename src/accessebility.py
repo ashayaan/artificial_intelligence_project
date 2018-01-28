@@ -13,44 +13,44 @@ def est_accessebility(protein_sequence):
 	
 def accessebility(aa):
 	if aa == 'A':
-		return 0.360
+		return 6.60
 	elif aa == 'R':
-		return 0.530
+		return 4.50
 	elif aa == 'N':
-		return 0.460
+		return 6.70
 	elif aa == 'D':
-		return 0.510
+		return 7.70
 	elif aa == 'C':
-		return 0.350
+		return 0.900
 	elif aa == 'Q':
-		return 0.490
+		return 5.200
 	elif aa == 'E':
-		return 0.500
+		return 5.700
 	elif aa == 'G':
-		return 0.540
+		return 6.700
 	elif aa == 'H':
-		return 0.320
+		return 2.500
 	elif aa == 'I':
-		return 0.460
+		return 2.800
 	elif aa == 'L':
-		return 0.370
+		return 4.800
 	elif aa == 'K':
-		return 0.470
+		return 10.300
 	elif aa == 'M':
-		return 0.300
+		return 1.000
 	elif aa == 'F':
-		return 0.310
+		return 2.400
 	elif aa == 'P':
-		return 0.510
+		return 4.800
 	elif aa == 'S':
-		return 0.510
+		return 9.400
 	elif aa == 'T':
-		return 0.440
+		return 7.000
 	elif aa == 'W':
-		return 0.310
+		return 1.400
 	elif aa == 'Y':
-		return 0.420
+		return 5.100
 	elif aa == 'V':
-		return 0.390
+		return 4.500
 	else:	
 		raise ValueError('The input must be one of the twenty amino acids: A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V') 

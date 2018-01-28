@@ -88,6 +88,10 @@ if __name__ == '__main__':
 		temp_label = 0
 		if result[i] <= 3000:
 			temp_label = 1
+		x = str(lable_list[i]) + ' ' + str(temp_label)
+		print x
+		with open("result.txt",'a') as res:
+			res.write(x + '\n')
 
 		if temp_label == lable_list[i]:
 			count+=1;

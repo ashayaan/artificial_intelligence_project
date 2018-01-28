@@ -5194,3 +5194,7 @@
   warnings.warn(msg, category=DeprecationWarning)
 /home/shayaan/anaconda2/lib/python2.7/site-packages/sklearn/utils/deprecation.py:77: DeprecationWarning: Function log_multivariate_normal_density is deprecated; The function log_multivariate_normal_density is deprecated in 0.18 and will be removed in 0.20.
   warnings.warn(msg, category=DeprecationWarning)
+Traceback (most recent call last):
+  File "HMM.py", line 92, in <module>
+    res.write(str(label_list[i]))
+NameError: name 'label_list' is not defined
