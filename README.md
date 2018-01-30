@@ -5,13 +5,13 @@ This file contains the instructions to compile and execute the models, that are 
 
 The required dependencies to use the train and use the model.
 
-- Python (>= 2.6)
-- Numpy (>= 1.9.3)
-- scikit-learn (>= 0.16)
-- SciPy ( >=0.16.0)
-- hmmlearn (>=0.2.1)
+* Python (>= 2.6)
+* Numpy (>= 1.9.3)
+* scikit-learn (>= 0.16)
+* SciPy ( >=0.16.0)
+* hmmlearn (>=0.2.1)
 
-##Installation of Dependencies
+## Installation of Dependencies
 Type the following commands in the terminal to install the reuqired dependencies.
 ```bash
 sudo apt-get install python-pip 
@@ -19,7 +19,7 @@ sudo pip install numpy scipy
 sudo pip install scikit-learn
 sudo pip install hmmlearn
 ```
-##Directory Structure of The Project
+## Directory Structure of The Project
 
 The directory structure of the project is as follows.
 
