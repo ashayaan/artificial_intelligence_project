@@ -1,3 +1,12 @@
+'''
+Author : Ahmad Shayaan, Indu Ilanchezian
+Date : 19 October 2017
+
+The file contains the code to train and test the
+Hiddne Markov Model.
+'''
+
+
 import pandas as pd
 import numpy as np
 from hmmlearn import hmm

@@ -1,16 +1,25 @@
+'''
+Authors : Ahmad Shayaan, Indu Ilanchezian
+Data : 19 October 2017
+
+The files contains the code to make plot for all the properties
+in a single graph.
+
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
 
 def subPlots(access,alpha,beta,flex,hydro,retention):
-	fig, (ax1,ax2, ax3, ax4, ax5, ax6) = plt.subplots(6)
+	fig, (ax1,ax2, ax3, ax4, ax5) = plt.subplots(5)
 	ax1.set_color_cycle('navy')
 	ax2.set_color_cycle('firebrick')
 	ax3.set_color_cycle('darkgreen')
 	ax4.set_color_cycle('navy')
 	ax5.set_color_cycle('firebrick')
-	ax6.set_color_cycle('darkgreen')
+	# ax6.set_color_cycle('darkgreen')
 	
 	fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
 	ax1.plot(access)
@@ -18,14 +27,14 @@ def subPlots(access,alpha,beta,flex,hydro,retention):
 	ax3.plot(beta)
 	ax4.plot(flex)
 	ax5.plot(hydro)
-	ax6.plot(retention)
+	# ax6.plot(retention)
 	
 	ax1.set(title='Accessible residues', xlabel = 'Position', ylabel='Score')
 	ax2.set(title='Alpha helix', xlabel = 'Position', ylabel='Score')
 	ax3.set(title='Beta turn', xlabel = 'Position', ylabel='Score')
 	ax4.set(title='Average flexibility', xlabel = 'Position', ylabel='Score')
 	ax5.set(title='Hydrophbicity', xlabel = 'Position', ylabel='Score')
-	ax6.set(title='TFA retention', xlabel = 'Position', ylabel='Score')
+	# ax6.set(title='TFA retention', xlabel = 'Position', ylabel='Score')
 
 	# ax1.set_color('black')
 	# plt.grid()
