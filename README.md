@@ -91,6 +91,9 @@ To run the script type the followng command
 ``` bash
 python "Model name"
 ```
+
+![Drag Racing](result_images/PNG-files/awindow21.png)
+
 Here model name is one of the model stored in the sub-directory. The data-files that are used to train the model are present in a list format in the script.
 
 ```py
